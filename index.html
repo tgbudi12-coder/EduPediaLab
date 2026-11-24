@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>EduPedia – Platform Ensiklopedia & Referensi Belajar</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <header class="site-header">
+        <div class="wrap bar">
+            <a class="brand" href="#">EduPedia<span id="serverStatusBadge" style="margin-left: 8px; font-size: 0.7rem; padding: 2px 6px; border-radius: 4px; font-weight: 600;">Memuat...</span></a>
+            <div class="search-box">
+                <input type="search" id="searchInput" placeholder="Cari materi atau referensi..." aria-label="Cari artikel">
+            </div>
+        </div>
+    </header>
+
+    <main class="wrap layout">
+        <!-- Bagian Daftar Artikel / Modul -->
+        <section class="content-area">
+            <div class="section-head">
+                <h2>Daftar Artikel & Referensi</h2>
+                <span id="resultCount" class="badge-count"></span>
+            </div>
+            
+            <div id="articlesContainer" class="grid">
+                <!-- Data dimuat dinamis lewat JavaScript -->
+            </div>
+
+            <div id="emptyState" class="empty hidden">
+                <p id="emptyText">Belum ada artikel yang tersedia.</p>
+            </div>
+        </section>
+
+        <!-- Bagian Form Tambah Artikel -->
+        <aside class="form-aside">
+            <div class="card-form">
+                <h2>Bagikan Artikel / Referensi</h2>
+                <form id="articleForm" novalidate>
+                    <div class="field">
+                        <label for="judul">Judul Pembahasan *</label>
+                        <input type="text" id="judul" required placeholder="Contoh: Pengantar Kecerdasan Buatan">
+                    </div>
+
+                    <div class="field">
+                        <label for="kategoriSelect">Kategori *</label>
+                        <select id="kategoriSelect" required>
+                            <option value="">Pilih Kategori...</option>
+                            <option value="Teknologi">Teknologi</option>
+                            <option value="Sains">Sains</option>
+                            <option value="Pemrograman">Pemrograman</option>
+                            <option value="Sejarah">Sejarah</option>
+                            <option value="DLL">DLL (Lainnya)</option>
+                        </select>
+                    </div>
+
+                    <!-- Input Kategori Kustom Jika Memilih DLL -->
+                    <div class="field hidden" id="customCategoryContainer">
+                        <label for="customCategory">Tulis Kategori Lainnya *</label>
+                        <input type="text" id="customCategory" placeholder="Masukkan nama kategori...">
+                    </div>
+
+                    <div class="field">
+                        <label for="penulis">Nama Kontributor *</label>
+                        <input type="text" id="penulis" required placeholder="Nama lengkap atau panggilan">
+                    </div>
+
+                    <div class="field">
+                        <label for="ringkasan">Isi Ringkasan / Materi *</label>
+                        <textarea id="ringkasan" rows="4" required placeholder="Tuliskan penjelasan atau referensi materi di sini..."></textarea>
+                    </div>
+
+                    <!-- Fitur Unggah Gambar Referensi -->
+                    <div class="field">
+                        <label for="fileGambar">Gambar Referensi / Petunjuk (Opsional)</label>
+                        <input type="file" id="fileGambar" accept="image/png, image/jpeg, image/webp">
+                        <div id="imagePreviewContainer" class="preview-box hidden" style="margin-top: 8px;">
+                            <img id="imagePreview" src="" alt="Pratinjau Gambar" style="max-width: 100%; height: auto; border-radius: 6px; max-height: 150px; object-fit: cover;">
+                            <button type="button" id="removeImageBtn" class="btn-text" style="display: block; margin-top: 4px; color: #dc2626; font-size: 0.85rem; cursor: pointer;">Hapus Gambar</button>
+                        </div>
+                    </div>
+
+                    <div id="formMessage" class="message"></div>
+
+                    <button type="submit" class="btn-primary">Kirim Artikel</button>
+                </form>
+            </div>
+        </aside>
+    </main>
+
+    <div id="toast" class="toast"></div>
+    <script src="script.js"></script>
+</body>
+</html>
